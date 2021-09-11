@@ -19,8 +19,8 @@ module.exports = {
 const storePhoto = function(file) {
     try {
         const content = fs.readFileSync(file.path);
-
-        const url = (path.join(process.env.STORE_LOCATION, file.filename) + path.extname(file.originalname)).replaceAll(/\\/g, '/');
+        const url = (path.join(process.env.STORE_LOCATION, file.filename) + path.extname(file.originalname)).replace(/\\/g, '/');
+        
         const storePath = path.join(path.dirname(require.main.filename), process.env.STATIC_RESOURCES_DIRECTORY, url);
 
         fs.writeFileSync(storePath, content, {
